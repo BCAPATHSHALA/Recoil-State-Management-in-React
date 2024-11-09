@@ -706,3 +706,9 @@ export default App;
 ## Screenshot After Loading
 
 ![recoil-6-after](./part6-2.png)
+
+# Explored Topics
+
+- Suspense Component in React
+- Error Boundaries in React
+

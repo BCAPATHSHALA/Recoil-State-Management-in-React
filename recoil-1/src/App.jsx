@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import {
   RecoilRoot as RecoilRootProvider,
-  useRecoilStateLoadable,
   useRecoilValueLoadable,
 } from "recoil";
 import { todoAtomFamily } from "./atoms";
@@ -27,11 +26,7 @@ const MainApp = () => {
 
 // Display the current todo component
 const Todo = ({ todoId }) => {
-  const [currentTodo, setCurrentTodo] = useRecoilStateLoadable(
-    todoAtomFamily(todoId)
-  );
-
-  // const currentTodo = useRecoilValueLoadable(todoAtomFamily(todoId));
+  const currentTodo = useRecoilValueLoadable(todoAtomFamily(todoId));
 
   if (currentTodo.state === "loading") {
     return <p>Loading...</p>;
