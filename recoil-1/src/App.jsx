@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import {
   RecoilRoot as RecoilRootProvider,
-  useRecoilValue,
-  useSetRecoilState,
+  useRecoilStateLoadable,
+  useRecoilValueLoadable,
 } from "recoil";
 import { todoAtomFamily } from "./atoms";
 
@@ -25,34 +25,23 @@ const MainApp = () => {
   );
 };
 
-// Update the todo component
-const UpdateTodo = ({ todoId }) => {
-  const updateTodo = useSetRecoilState(todoAtomFamily(todoId));
-  return (
-    <button
-      onClick={() =>
-        updateTodo({
-          id: todoId,
-          title: "Updated Title",
-          description: "Updated Description",
-        })
-      }
-    >
-      Update Todo
-    </button>
-  );
-};
-
 // Display the current todo component
 const Todo = ({ todoId }) => {
-  const currentTodo = useRecoilValue(todoAtomFamily(todoId));
+  const [currentTodo, setCurrentTodo] = useRecoilStateLoadable(
+    todoAtomFamily(todoId)
+  );
+
+  // const currentTodo = useRecoilValueLoadable(todoAtomFamily(todoId));
+
+  if (currentTodo.state === "loading") {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
-      <h2>Todo {currentTodo.id}</h2>
-      <p>Title: {currentTodo.title}</p>
-      <p>Description: {currentTodo.description}</p>
-      <UpdateTodo todoId={todoId} />
+      <h2>Todo {currentTodo.contents.id}</h2>
+      <p>Title: {currentTodo.contents.title}</p>
+      <p>Description: {currentTodo.contents.description}</p>
     </div>
   );
 };
