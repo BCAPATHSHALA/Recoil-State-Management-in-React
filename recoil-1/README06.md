@@ -87,11 +87,11 @@ export default App;
 
 ## Screenshot Before Loading
 
-![recoil-6-before](./part6.png)
+![recoil-6-before](./public/part6.png)
 
 ## Screenshot After Loading
 
-![recoil-6-after](./part6-2.png)
+![recoil-6-after](./public/part6-2.png)
 
 ## Conclusion
 
