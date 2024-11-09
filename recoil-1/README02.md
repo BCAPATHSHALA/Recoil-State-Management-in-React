@@ -169,12 +169,12 @@ export const totalNotificationSelector = selector({
 **What are the profits of using useMemo and Recoil Selectors?**
 
 Reasons to use useMemo and Recoil Selectors:
+
 - Use useMemo to optimize performance by memoizing expensive calculations.
 - Use Recoil Selectors to read the value of an `atom` or a `selector` in a React application.
-
 
 ## Conclusion
 
 In this step, we've learned how to create atoms, selectors, and use them in a React component. We also learned how to use Recoil to manage state in a React application.
 
-That's it for this step! We've covered the basics of Recoil in React. Next step is to learn how to use Recoil to manage state in a React application.
+For more information, please refer to the official documentation: https://recoiljs.org/docs/introduction/getting-started
