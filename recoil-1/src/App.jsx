@@ -17,8 +17,7 @@ const App = () => {
 const MainApp = () => {
   return (
     <>
-      <h1>RECOIL STATE MANAGEMENT PART - 04</h1>
-      <Todo todoId={1} />
+      <h1>RECOIL STATE MANAGEMENT PART - 05</h1>
       <Todo todoId={1} />
       <Todo todoId={2} />
       <Todo todoId={3} />
