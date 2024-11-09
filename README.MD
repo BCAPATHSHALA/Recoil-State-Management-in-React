@@ -167,3 +167,5 @@ const MyComponent = () => {
 
 **Why UseRecoilState:**
 UseRecoilState is used to read and update the value of a selector in a React component. It returns the current value of the selector and a function to update the value.
+
+# Recoil State Management in React (Recoil Part 3)
