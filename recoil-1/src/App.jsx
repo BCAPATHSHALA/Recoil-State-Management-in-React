@@ -1,13 +1,15 @@
-/* eslint-disable no-unused-vars */
-import { RecoilRoot as RecoilRootProvider, useRecoilValue } from "recoil";
+import { useEffect } from "react";
 import {
-  jobsAtom,
-  messagingAtom,
-  networkAtom,
+  RecoilRoot as RecoilRootProvider,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
+import {
   notificationsAtom,
+  notificationsSelector,
   totalNotificationSelector,
 } from "./atoms";
-import { useMemo } from "react";
+
 const App = () => {
   return (
     <RecoilRootProvider>
@@ -17,20 +19,30 @@ const App = () => {
 };
 
 const MainApp = () => {
-  const networkValue = useRecoilValue(networkAtom);
-  const messagingValue = useRecoilValue(messagingAtom);
-  const jobsValue = useRecoilValue(jobsAtom);
-  const notificationsValue = useRecoilValue(notificationsAtom);
-
-  // const totalNotifications = useMemo(() => {
-  //   return networkValue + messagingValue + jobsValue + notificationsValue;
-  // }, [notificationsValue, jobsValue, messagingValue, networkValue]);
-
+  const [networkCount, setNetworkCount] = useRecoilState(notificationsAtom);
   const totalNotifications = useRecoilValue(totalNotificationSelector);
+  const fetchedNotifications = useRecoilValue(notificationsSelector);
+
+  const {
+    network: networkValue,
+    jobs: jobsValue,
+    messaging: messagingValue,
+    notifications: notificationsValue,
+  } = networkCount;
+
+  // Set notifications only after the component has mounted
+  useEffect(() => {
+    // Set notifications
+    if (fetchedNotifications) {
+      setNetworkCount(fetchedNotifications);
+    }
+    // Return a cleanup function
+    return () => {};
+  }, [fetchedNotifications, setNetworkCount]);
 
   return (
     <>
-      <h1>RECOIL STATE MANAGEMENT PART - 01</h1>
+      <h1>RECOIL STATE MANAGEMENT PART - 03</h1>
       <div>
         <button>Home</button>
 
